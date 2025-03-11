@@ -1,5 +1,6 @@
 package com.example.tnr;
 
+import Constants.PathConstants;
 import Utils.DevToolsUtils;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
@@ -19,7 +20,6 @@ import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 public class Hooks {
 	public static WebDriver driver;
 	private static WireMockServer wireMockServer;
-	public static final String BASE_URL = "http://development.jacquemus.com/en_fr";
 	private static final Logger logger = LoggerFactory.getLogger(Hooks.class);
 	@Before("@Backend")
 	public void setupWireMock() {
@@ -40,7 +40,7 @@ public class Hooks {
 		((JavascriptExecutor) driver).executeScript(
 				"Object.defineProperty(navigator, 'webdriver', {get: () => undefined});"
 		);
-		driver.get(BASE_URL);
+		driver.get(PathConstants.BASE_URL);
 	}
 
 	@After

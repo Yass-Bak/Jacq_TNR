@@ -1,5 +1,7 @@
 package com.example.tnr;
 
+import Constants.APIConstants;
+import Constants.PathConstants;
 import Helpers.SelectorsHelpers;
 import Utils.ScreenshotUtils;
 import io.cucumber.java.en.And;
@@ -21,7 +23,7 @@ import static org.junit.Assert.assertTrue;
 public class CheckoutSteps {
     private static final Logger logger = LoggerFactory.getLogger(CheckoutSteps.class);
     private WebDriver driver = Hooks.driver;
-    private String baseUrl = Hooks.BASE_URL;
+    PathConstants PathConstants = new PathConstants();
     private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     @Given("I am on the checkout page France As Region And Accepting all Cookies")
@@ -49,7 +51,7 @@ public class CheckoutSteps {
             /* driver.navigate().to("https://development.jacquemus.com/en_fr/baskets-tote-bags-women");
             By Sac = By.xpath("//*[@id=\"searchWrapper\"]/infinite-scroll/tile-container/product-tile[1]/div/div[2]/div[3]/div[1]/a/img");
             Helpers.clickWhenClickable(driver,Sac,10);*/
-            driver.navigate().to("https://development.jacquemus.com/en_fr/the-soli-basket/223BA045-3060-434.html");
+            driver.navigate().to(PathConstants.Product1);
 
             // Step 1: Navigate to Men's section
            /* By menSectionLocator = By.id("Men");
@@ -133,7 +135,7 @@ public void i_choose_a_product_to_add() {
     @And("I check if have item in my cart")
     public void i_have_items_in_my_cart() {
         try {
-            driver.get(baseUrl);
+            driver.get(PathConstants.BASE_URL);
             WebElement cartButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("panel-minicart-toggle")));
             cartButton.click();
             logger.info("Step 1: Open cart successfully.");
