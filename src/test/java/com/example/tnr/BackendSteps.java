@@ -1,5 +1,7 @@
 package com.example.tnr;
 
+import Constants.APIConstants;
+import Utils.WireMockUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;

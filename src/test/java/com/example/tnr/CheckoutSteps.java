@@ -1,19 +1,19 @@
 package com.example.tnr;
 
+import Helpers.SelectorsHelpers;
+import Utils.ScreenshotUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -28,7 +28,7 @@ public class CheckoutSteps {
     public void i_am_on_the_checkout_page() {
         try {
             WebElement region = wait
-                    .until(ExpectedConditions.elementToBeClickable(By.className("popin__geoloc__locale")));
+                    .until(ExpectedConditions.elementToBeClickable(By.id("popin-locale")));
             WebElement cookies = wait
                     .until(ExpectedConditions.elementToBeClickable(By.id("onetrust-accept-btn-handler")));
             region.click();
@@ -41,12 +41,18 @@ public class CheckoutSteps {
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
-/*
+
     @When("I fill the cart with a product")
     public void i_choose_a_product_to_add() {
         try {
+           //Bags
+            /* driver.navigate().to("https://development.jacquemus.com/en_fr/baskets-tote-bags-women");
+            By Sac = By.xpath("//*[@id=\"searchWrapper\"]/infinite-scroll/tile-container/product-tile[1]/div/div[2]/div[3]/div[1]/a/img");
+            Helpers.clickWhenClickable(driver,Sac,10);*/
+            driver.navigate().to("https://development.jacquemus.com/en_fr/the-soli-basket/223BA045-3060-434.html");
+
             // Step 1: Navigate to Men's section
-            By menSectionLocator = By.id("Men");
+           /* By menSectionLocator = By.id("Men");
             Helpers.clickWhenClickable(driver, menSectionLocator, 10);
             logger.info("Navigate to Men's section successfully.");
 
@@ -68,15 +74,15 @@ public class CheckoutSteps {
             // Step 5: Select size
             By sizeLocator = By.xpath("//div[@id='productSizesWrapper']/ul/li[3]/button");
             Helpers.clickWhenClickable(driver, sizeLocator, 10);
-            logger.info("Size selected successfully.");
+            logger.info("Size selected successfully.");*/
 
             // Step 6: Add to cart
             By addToCartLocator = By.id("addToCartBtn");
-            Helpers.clickWhenClickable(driver, addToCartLocator, 10);
+            SelectorsHelpers.clickWhenClickable(driver, addToCartLocator, 10);
             logger.info("Add to cart successfully.");
             // Wait for cart panel
             WebElement panel = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#panel-minicart > .panel__wrapper")));
+                    ExpectedConditions.visibilityOfElementLocated(By.id("panel-minicart")));
 			//Cas de Broken
 			assertTrue("Panel is not visible", panel.isDisplayed());
         } catch (Exception e) {
@@ -84,65 +90,46 @@ public class CheckoutSteps {
             ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
-    }*/
+    }
+/*
 @When("I fill the cart with a product")
 public void i_choose_a_product_to_add() {
     try {
         DevTools.NetworkCheck(driver);
         // Click to open account header
-        WebElement accountHeader = driver.findElement(By.className("header__account__link"));
+        WebElement accountHeader = driver.findElement(By.xpath("//*[@id=\"headerSecondaryNav\"]/div[2]/div/div[1]/span"));
         accountHeader.click();
 
-        // Wait for dialog to be visible (not just present)
-        WebElement dialog = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.id("panel-account"))
-        );
-
-        // Verify dialog is actually displayed
-        if (dialog.isDisplayed()) {
-            // Fill email
             WebElement email = wait.until(
                     ExpectedConditions.presenceOfElementLocated(By.id("email"))
             );
-            Actions actions = new Actions(driver);
-            actions.click(email)
-                    .pause(1000)
-                    .sendKeys("khitem.guerbouj.ext@gmail.com")
-                    .perform();
 
-            // Fill password
             WebElement password = wait.until(
                     ExpectedConditions.visibilityOfElementLocated(By.id("loginpassword"))
             );
-            actions.click(password)
-                    .pause(1000)
+            Actions actions = new Actions(driver);
+            actions.click(email)
+                    .pause(Duration.ofSeconds(10))
+                    .sendKeys("khitem.guerbouj.ext@gmail.com")
+                    .pause(Duration.ofSeconds(20))
+                    .click(password)
+                    .pause(Duration.ofSeconds(10))
                     .sendKeys("Yassine_1144!")
+                    .pause(Duration.ofSeconds(20))
                     .perform();
-            // Click login button
-           WebElement loginButton = wait.until(
-                    ExpectedConditions.elementToBeClickable(By.cssSelector("#dwfrm_profile_logincustomer"))
+            WebElement logincustomer = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(By.id("dwfrm_profile_logincustomer"))
             );
-            //driver.manage().addCookie(new Cookie("name", "value"));
-            actions.moveToElement(loginButton).sendKeys(Keys.ENTER).perform();
+            actions.moveToElement(logincustomer).sendKeys(Keys.ENTER).perform();
+           // JavascriptExecutor js = (JavascriptExecutor) driver;
+            //js.executeScript("arguments[0].click();", logincustomer);
             logger.info("Clicked");
-         /* WebElement info = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(By.className("account-panel__informations"))
-            );
-            if(info.isDisplayed()) {
-                logger.info("Login successfully.");
-            } else {
-            logger.warn("faild login");
-        }*/
-
-        } else {
-            logger.warn("Login dialog was not displayed");
-        }
     } catch (Exception e) {
         logger.error("Test failed at step: {}", e.getMessage(), e);
         ScreenshotUtils.takeScreenshot(driver);
         throw new RuntimeException("Step failed: " + e.getMessage());
     }
-}
+}*/
     @And("I check if have item in my cart")
     public void i_have_items_in_my_cart() {
         try {
@@ -168,13 +155,22 @@ public void i_choose_a_product_to_add() {
             WebElement checkoutButton = wait
                     .until(ExpectedConditions.elementToBeClickable(By.id("miniCart__buttons__checkout")));
             checkoutButton.click();
-
-            WebElement dropdownButton = wait
-                    .until(ExpectedConditions.elementToBeClickable(By.id("shipmentSelector-default")));
-            dropdownButton.click();
+            WebElement Email = driver.findElement(By.id("email-guest"));
+            Email.sendKeys("khitem.guerbouj.ext@gmail.com");
+            WebElement LoginButton = wait
+                    .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"guest-customer\"]/fieldset/div[2]/button[1]")));
+            LoginButton.click();
+            WebElement PasswordField = wait
+                    .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"password\"]")));
+            PasswordField.sendKeys("Yassine_1144!");
+            Actions actions = new Actions(driver);
+            actions.moveToElement(LoginButton).sendKeys(Keys.ENTER).build().perform();
+            WebElement Shipping = wait
+                    .until(ExpectedConditions.visibilityOfElementLocated(By.id("shipmentSelector-default")));
+            assertTrue("Shiiping form not visible", Shipping.isDisplayed());
 
             WebElement selectedOption = wait.until(ExpectedConditions
-                    .visibilityOfElementLocated(By.xpath("//select[@id='shipmentSelector-default']/option[3]")));
+                    .visibilityOfElementLocated(By.className("shipmentSelector")));
             assertEquals(
                     "95 Rue Gontier Patin - Abbeville - 80100 - Khitem Guerbouj 95 Rue Gontier Patin Aix-en-provence Abbeville,  80100",
                     selectedOption.getText());
@@ -189,7 +185,7 @@ public void i_choose_a_product_to_add() {
     public void i_select_a_shipping_method() {
         try {
             WebElement shippingMethod = wait.until(
-                    ExpectedConditions.elementToBeClickable(By.id("shippingMethod-CHD-5f35b477cbab9108854a813231")));
+                    ExpectedConditions.elementToBeClickable(By.cssSelector("checkoutMain__radio")));
             shippingMethod.click();
             logger.info("Shipping method selected successfully.");
         } catch (Exception e) {
@@ -231,7 +227,7 @@ public void i_choose_a_product_to_add() {
     @And("I click the Verify My Information button")
     public void i_click_the_verify_my_information_button() {
         try {
-            Helpers.clickWhenClickable(driver, By.xpath("//*[@id=\"checkout-main\"]/div[1]/div[8]/button[1]"), 10);
+            SelectorsHelpers.clickWhenClickable(driver, By.xpath("//*[@id=\"checkout-main\"]/div[1]/div[8]/button[1]"), 10);
             WebElement paymentSummary = wait
                     .until(ExpectedConditions.visibilityOfElementLocated(By.className("checkoutMain__stepInfo")));
             assertEquals(" Récapitulatif et paiement", paymentSummary.getText());
