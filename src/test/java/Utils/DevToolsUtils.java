@@ -5,6 +5,7 @@ import org.openqa.selenium.devtools.HasDevTools;
 import org.openqa.selenium.devtools.v133.network.Network;
 import org.openqa.selenium.devtools.v133.network.model.Headers;
 import org.openqa.selenium.devtools.v133.network.model.ResponseReceived;
+import org.openqa.selenium.edge.EdgeDriver;
 
 import java.util.Base64;
 import java.util.HashMap;
@@ -41,6 +42,17 @@ public class DevToolsUtils {
     }
     public static void HttpAuth (WebDriver driver){
         org.openqa.selenium.devtools.DevTools devTools = ((ChromeDriver)driver).getDevTools();
+        devTools.createSession();
+        devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+        String auth = "Basic " + Base64.getEncoder().encodeToString(
+                ("storefront:Monceau69").getBytes());
+        Map<String, Object> headers = new HashMap<>();
+        headers.put("Authorization", auth);
+        Headers extraHeaders = new Headers(headers);
+        devTools.send(Network.setExtraHTTPHeaders(extraHeaders));
+    }
+    public static void HttpAuthEdge (WebDriver driver){
+        org.openqa.selenium.devtools.DevTools devTools = ((EdgeDriver)driver).getDevTools();
         devTools.createSession();
         devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
         String auth = "Basic " + Base64.getEncoder().encodeToString(

@@ -108,12 +108,12 @@
 
 		<!-- This will download the Driver Auto -->
 		<!--WebDriverManager.edgedriver().setup();-->
-		<!-- <dependency>
+		 <dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.6.1</version>
 			<scope>test</scope>
-		</dependency>-->
+		</dependency>
 		<!-- Simple logging implementation for tests -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
