@@ -1,6 +1,6 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Mon Mar 10 15:22:54 CET 2025","Mon Mar 10 15:23:00 CET 2025","6270","","Backend Order Fulfilment Processes","","Backend Processes for Order Fulfillment","","Backend Processes for Order Fulfillment","	  As a system administrator
+"passed","Wed Mar 12 14:54:07 CET 2025","Wed Mar 12 14:54:11 CET 2025","4250","","Backend Order Fulfilment Processes","","Backend Processes for Order Fulfillment","","Backend Processes for Order Fulfillment","	  As a system administrator
 	  I want to ensure backend processes for order fulfillment are triggered correctly"
-"broken","Mon Mar 10 15:22:54 CET 2025","Mon Mar 10 15:24:29 CET 2025","94931","","Checkout Functionality - France - Visa Payment - Chronopost","","User completes the checkout process successfully","","User completes the checkout process successfully","  As a user in France
-  I want to complete the checkout process using Visa Payment and Chronopost shipping
-  So that I can purchase items from the Jacquemus website"
+"broken","Wed Mar 12 14:54:07 CET 2025","Wed Mar 12 14:55:20 CET 2025","73267","","Test Purchase with Visa Payment and Chronopost Shipping in France","","check Purchase Using Visa and Chronopost Shipping","","check Purchase Using Visa and Chronopost Shipping","  As a customer in France
+  I want to purchase a product using Visa and have it shipped with Chronopost
+  So that I receive my order securely and on time"

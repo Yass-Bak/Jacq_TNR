@@ -1,4 +1,13 @@
 com\example\tnr\CucumberTest.class
-com\example\tnr\CheckoutSteps.class
-com\example\tnr\BackendSteps.class
+com\example\tnr\Utils\DevToolsUtils.class
+com\example\tnr\StepsDefinition\CheckoutSteps.class
+com\example\tnr\Constants\PathConstants.class
+com\example\tnr\Utils\WireMockUtils.class
+com\example\tnr\StepsDefinition\BackendSteps.class
 com\example\tnr\Hooks.class
+com\example\tnr\Helpers\SelectorsHelpers.class
+com\example\tnr\Utils\VideoRecorderUtils$CustomScreenRecorder.class
+com\example\tnr\Utils\ScreenshotUtils.class
+com\example\tnr\Utils\VideoRecorderUtils.class
+com\example\tnr\Utils\DriversOptions.class
+com\example\tnr\Constants\APIConstants.class
