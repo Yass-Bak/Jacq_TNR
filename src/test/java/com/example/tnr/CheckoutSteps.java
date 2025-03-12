@@ -31,7 +31,7 @@ public class CheckoutSteps {
             logger.info("Successfully navigated to the e-commerce website.");
         } catch (Exception e) {
             logger.error("Error at: @Given(\"the user accesses the e-commerce website on Google Chrome\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -47,7 +47,7 @@ public class CheckoutSteps {
             logger.info("Successfully chose France as location.");
         } catch (Exception e) {
             logger.error("Error at: @Given(\"chose france as a location\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -83,7 +83,7 @@ public class CheckoutSteps {
             logger.info("Successfully selected a product from the store.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user selects a product from the store\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -96,7 +96,7 @@ public class CheckoutSteps {
             logger.info("Successfully added a product to the cart.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user add a product to the cart\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -109,7 +109,7 @@ public class CheckoutSteps {
             logger.info("Successfully proceeded to checkout.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user proceds to checkout\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -122,7 +122,7 @@ public class CheckoutSteps {
             logger.info("Login page is displayed.");
         } catch (Exception e) {
             logger.error("Error at: @Then(\"the login page should be displayed\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -138,7 +138,7 @@ public class CheckoutSteps {
             logger.info("Successfully entered valid login.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user enters valid login\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -151,7 +151,7 @@ public class CheckoutSteps {
             logger.info("Successfully entered valid password.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user enters valid password\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -164,7 +164,7 @@ public class CheckoutSteps {
             logger.info("Successfully clicked on the login button.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user clicks on the login button\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -177,7 +177,7 @@ public class CheckoutSteps {
             logger.info("Shipping information form is displayed.");
         } catch (Exception e) {
             logger.error("Error at: @Then(\"the shipping information form should be displayed\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -201,7 +201,7 @@ public class CheckoutSteps {
             logger.info("Successfully filled in the shipping details.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user fills in the shipping details with\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -221,7 +221,7 @@ public class CheckoutSteps {
             logger.info("Successfully filled address and zip code.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user fills his Adresse or his zip code the system should send checkout details\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -245,7 +245,7 @@ public class CheckoutSteps {
             logger.info("Successfully selected " + shipmentMethod + " as the shipment method.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user selects {string} as the shipment method\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -259,7 +259,7 @@ public class CheckoutSteps {
             logger.info(buttonName + " button is displayed.");
         } catch (Exception e) {
             logger.error("Error at: @Then(\"the {string} button should be displayed\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -272,7 +272,7 @@ public class CheckoutSteps {
             logger.info("Successfully clicked on " + buttonName + " button.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user selects the button {string}\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -288,7 +288,7 @@ public class CheckoutSteps {
             logger.info("Successfully displayed recap of client information and shipping details.");
         } catch (Exception e) {
             logger.error("Error at: @Then(\"the system should display a recap of the Client Personal Information and Shipping and Shipment Mode Chosen before {string} with estimated Shipment Date and available Payment methods\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -301,7 +301,7 @@ public class CheckoutSteps {
             logger.info("Successfully selected " + paymentMethod + " as the payment method.");
         } catch (Exception e) {
             logger.error("Error at: @When(\"the user selects {string} as the payment method\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -314,7 +314,7 @@ public class CheckoutSteps {
             logger.info("Visa info form is displayed.");
         } catch (Exception e) {
             logger.error("Error at: @Then(\"System Should display a form under the checked button\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -348,7 +348,7 @@ public class CheckoutSteps {
             logger.info("Successfully entered payment details.");
         } catch (Exception e) {
             logger.error("Error at: @Then(\"the user enters the following payment details\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -361,7 +361,7 @@ public class CheckoutSteps {
             logger.info("Verify My Information button is displayed.");
         } catch (Exception e) {
             logger.error("Error at: @Then(\"the button verify my information should be display\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -380,7 +380,7 @@ public class CheckoutSteps {
             logger.info("Successfully clicked on " + buttonName + " button.");
         } catch (Exception e) {
             logger.error("Error at: @Then(\"the user Click on {string} Button\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -395,7 +395,7 @@ public class CheckoutSteps {
             logger.info("Terms and conditions section is displayed.");
         } catch (Exception e) {
             logger.error("Error at: @Then(\"System Should display the Terms and Conditions Acceptance and Consent and Agreement Section\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -405,14 +405,12 @@ public class CheckoutSteps {
         try {
             WebElement acceptanceAndConsent = wait.until(ExpectedConditions.visibilityOfElementLocated(
                     By.xpath("/html/body/div[2]/div/div/div[1]/div[7]/div[3]/label")));
-
-            // Click on the element
             acceptanceAndConsent.click();
 
             logger.info("Successfully checked " + checkboxLabel + ".");
         } catch (Exception e) {
             logger.error("Error at: @Then(\"the user checks {string}\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
@@ -454,11 +452,8 @@ public class CheckoutSteps {
 
         } catch (Exception e) {
             logger.error("Error at: @Then(\"the system should display a thank you page with an order summary\")", e);
-            // Take screenshot
+            ScreenshotUtils.takeScreenshot(driver);
             throw new RuntimeException("Step failed: " + e.getMessage());
         }
     }
-
-
-
 }
